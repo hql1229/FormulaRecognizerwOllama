@@ -1,0 +1,2 @@
+# FormulaRecognizerwOllama
+使用ollama进行数学公式识别
