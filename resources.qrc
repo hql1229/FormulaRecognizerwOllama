@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/ollama.ico</file>
+        <file>resources/word2.png</file>
+        <file>resources/copy.png</file>
+        <file>resources/screenshot.png</file>
+        <file>resources/word.png</file>
+        <file>resources/math.ico</file>
+    </qresource>
+</RCC>
