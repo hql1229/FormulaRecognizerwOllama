@@ -83,7 +83,7 @@ void MainWindow::on_captureButton_clicked()
 {
     // Hide main window temporarily to not include it in screenshot
     this->hide();
-     QTimer::singleShot(150, this, [this]() { // Small delay to ensure window is hidden
+     QTimer::singleShot(300, this, [this]() { // Small delay to ensure window is hidden
         QPixmap capturedPixmap = ScreenshotOverlay::takeScreenshot();
         this->show(); // Show main window again
 
