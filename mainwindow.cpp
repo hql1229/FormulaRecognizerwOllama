@@ -68,7 +68,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // --- Initial state for result text edit (supports some Markdown) ---
     ui->resultTextEdit->setMarkdown(""); // Clear initially
-    ui->resultTextEdit->setReadOnly(true);
+//    ui->resultTextEdit->setReadOnly(true);
 
     // --- Status Bar ---
     statusBar()->showMessage("Ready.");
@@ -343,4 +343,9 @@ void MainWindow::on_exportButton_clicked()
             qInfo() << "临时 Markdown 文件已删除:" << tempMdFilePath;
         }
     }
+}
+
+void MainWindow::on_editable_checkBox_clicked()
+{
+    ui->resultTextEdit->setReadOnly(!ui->editable_checkBox->checkState());
 }

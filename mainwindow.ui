@@ -136,6 +136,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="editable_checkBox">
+        <property name="text">
+         <string>可编辑</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>

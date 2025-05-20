@@ -26,6 +26,8 @@ private slots:
     void on_exportButton_clicked(); // 导出
     // void handleScreenshotTaken(const QPixmap &pixmap); // If ScreenshotOverlay emits signal
 
+    void on_editable_checkBox_clicked();
+
 private:
     Ui::MainWindow *ui;
     OllamaClient *ollamaClient;
