@@ -3,11 +3,6 @@ MainWindow {
     background-color: #1a1a1a;
 }
 
-QFrame{
-border-radius:10px;
-border:1px solid rgb(100, 100,189)
-}
-
 /* 截图显示区域 */
 QCheckBox {
     color: #ecf0f1;
