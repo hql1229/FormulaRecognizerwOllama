@@ -106,7 +106,8 @@ void MainWindow::on_captureButton_clicked()
 
 void MainWindow::handleRecognitionSuccess(const QString &markdownFormula)
 {
-    ui->resultTextEdit->setMarkdown(markdownFormula);
+//    ui->resultTextEdit->setMarkdown(markdownFormula);
+    ui->resultTextEdit->setPlainText(markdownFormula);
     statusBar()->showMessage("Recognition successful!", 5000);
 }
 
