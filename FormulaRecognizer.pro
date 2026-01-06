@@ -19,12 +19,14 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     ollamaclient.cpp \
-    screenshotoverlay.cpp
+    screenshotoverlay.cpp \
+    configmanager.cpp
 
 HEADERS += \
     mainwindow.h \
     ollamaclient.h \
-    screenshotoverlay.h
+    screenshotoverlay.h \
+    configmanager.h
 
 FORMS += \
     mainwindow.ui
