@@ -29,6 +29,7 @@ private slots:
 
     void on_editable_checkBox_clicked();
     void onConfigChanged(const QString &key); // 配置变更处理
+    void onSettingsTriggered(); // 打开设置对话框
 
 private:
     Ui::MainWindow *ui;
@@ -37,5 +38,6 @@ private:
 
     QString convertMarkdownToMathML_Pandoc(const QString& markdownText);
     bool convertMdFileToDocx_Pandoc(const QString& mdFilePath, const QString& docxFilePath);
+    void createMenuBar(); // 创建菜单栏
 };
 #endif // MAINWINDOW_H
