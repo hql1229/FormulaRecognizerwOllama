@@ -27,21 +27,26 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug() << "Failed to load icon";
     }
 
+    // --- 从 ConfigManager 加载配置 ---
+    ConfigManager &config = ConfigManager::instance();
+
+    // 恢复窗口几何状态
+    QRect geometry = config.getWindowGeometry();
+    if (!geometry.isEmpty()) {
+        setGeometry(geometry);
+    }
+
+    QString windowState = config.getWindowState();
+    if (windowState == "maximized") {
+        showMaximized();
+    } else if (windowState == "minimized") {
+        showMinimized();
+    }
+
     // --- UI Setup ---
-    // Default values for optional fields (if you added them in the .ui)
-    ui->ollamaUrlLineEdit->setText("http://localhost:11434/api/generate");
-    ui->modelNameLineEdit->setText("qwen2.5vl:7b");
-
-    // --- Connect signals ---
-    connect(ui->ollamaUrlLineEdit, &QLineEdit::textChanged,
-            this, [this](const QString &text) {
-                ollamaClient->updateSettings(text, ui->modelNameLineEdit->text());
-            });
-
-    connect(ui->modelNameLineEdit, &QLineEdit::textChanged,
-            this, [this](const QString &text) {
-                ollamaClient->updateSettings(ui->ollamaUrlLineEdit->text(), text);
-            });
+    // 从配置加载 Ollama 设置
+    ui->ollamaUrlLineEdit->setText(config.getOllamaUrl());
+    ui->modelNameLineEdit->setText(config.getOllamaModel());
 
     // --- Set Window Border Color ---
     QPalette palette = this->palette();
@@ -66,6 +71,28 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ollamaClient, &OllamaClient::recognitionSuccess, this, &MainWindow::handleRecognitionSuccess);
     connect(ollamaClient, &OllamaClient::recognitionError, this, &MainWindow::handleRecognitionError);
 
+    // --- 连接 Ollama 配置变更信号 ---
+    connect(ui->ollamaUrlLineEdit, &QLineEdit::textChanged,
+            this, [this](const QString &text) {
+                ollamaClient->updateSettings(text, ui->modelNameLineEdit->text());
+                // 保存到配置
+                ConfigManager::instance().setOllamaUrl(text);
+            });
+
+    connect(ui->modelNameLineEdit, &QLineEdit::textChanged,
+            this, [this](const QString &text) {
+                ollamaClient->updateSettings(ui->ollamaUrlLineEdit->text(), text);
+                // 保存到配置
+                ConfigManager::instance().setOllamaModel(text);
+            });
+
+    // 连接配置变更信号
+    connect(&config, &ConfigManager::configChanged,
+            this, &MainWindow::onConfigChanged);
+
+    // 初始化 Ollama 客户端设置
+    ollamaClient->updateSettings(config.getOllamaUrl(), config.getOllamaModel());
+
     // --- Initial state for result text edit (supports some Markdown) ---
     ui->resultTextEdit->setMarkdown(""); // Clear initially
 //    ui->resultTextEdit->setReadOnly(true);
@@ -76,6 +103,21 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    // 保存窗口几何状态到配置
+    ConfigManager &config = ConfigManager::instance();
+    config.setWindowGeometry(geometry());
+
+    if (isMaximized()) {
+        config.setWindowState("maximized");
+    } else if (isMinimized()) {
+        config.setWindowState("minimized");
+    } else {
+        config.setWindowState("normal");
+    }
+
+    // 保存配置到文件
+    config.save();
+
     delete ui;
 }
 
@@ -349,4 +391,26 @@ void MainWindow::on_exportButton_clicked()
 void MainWindow::on_editable_checkBox_clicked()
 {
     ui->resultTextEdit->setReadOnly(!ui->editable_checkBox->checkState());
+}
+
+void MainWindow::onConfigChanged(const QString &key)
+{
+    ConfigManager &config = ConfigManager::instance();
+
+    if (key.startsWith("ollama.")) {
+        // Ollama 配置变更，更新客户端
+        ollamaClient->updateSettings(
+            config.getOllamaUrl(),
+            config.getOllamaModel()
+        );
+        qDebug() << "Ollama 配置已更新:" << key;
+    } else if (key.startsWith("ui.theme")) {
+        // 主题变更
+        QString theme = config.getTheme();
+        // 如果需要支持主题切换，可以在这里添加逻辑
+        qDebug() << "主题已变更为:" << theme;
+    } else if (key.startsWith("ui.")) {
+        // 其他 UI 配置变更
+        qDebug() << "UI 配置已变更:" << key;
+    }
 }

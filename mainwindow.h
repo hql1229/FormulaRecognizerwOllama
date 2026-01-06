@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "ollamaclient.h" // Include ollamaclient
 #include "screenshotoverlay.h" // Include screenshotoverlay
+#include "configmanager.h" // Include configmanager
 #include <QProcess>
 
 QT_BEGIN_NAMESPACE
@@ -27,6 +28,7 @@ private slots:
     // void handleScreenshotTaken(const QPixmap &pixmap); // If ScreenshotOverlay emits signal
 
     void on_editable_checkBox_clicked();
+    void onConfigChanged(const QString &key); // 配置变更处理
 
 private:
     Ui::MainWindow *ui;
