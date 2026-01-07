@@ -430,6 +430,157 @@ void MainWindow::createMenuBar()
     // 创建菜单栏
     QMenuBar *menuBar = new QMenuBar(this);
     setMenuBar(menuBar);
+    
+    // 确保菜单栏可见
+    menuBar->setVisible(true);
+    
+    // 在某些平台上，可能需要显式设置菜单栏为非原生
+    menuBar->setNativeMenuBar(false);
+    
+    // 调试输出以确认菜单栏已创建
+    qDebug() << "Menu bar created:" << menuBar << "Visible:" << menuBar->isVisible();
+    qDebug() << "Menu bar geometry:" << menuBar->geometry();
+    qDebug() << "Menu bar size:" << menuBar->size();
+    qDebug() << "Menu bar native:" << menuBar->isNativeMenuBar();
+    qDebug() << "Window menu bar:" << this->menuBar();
+    qDebug() << "Menu bar parent:" << menuBar->parent();
+    qDebug() << "Menu bar is hidden:" << menuBar->isHidden();
+    qDebug() << "Menu bar is enabled:" << menuBar->isEnabled();
+    qDebug() << "Menu bar actions count:" << menuBar->actions().count();
+    
+    // 确保菜单栏被正确显示
+    menuBar->show();
+    menuBar->update();
+    
+    // 确保菜单栏在窗口顶部
+    menuBar->raise();
+    
+    // 确保菜单栏有足够的高度
+    menuBar->setMinimumHeight(24);
+    menuBar->setMaximumHeight(32);
+    
+    // 确保菜单栏背景不透明
+    menuBar->setAutoFillBackground(true);
+    
+    // 简化菜单栏设置 - 移除过多的调色板配置
+    menuPalette.setColor(QPalette::WindowText, QColor(236, 240, 241));
+    menuPalette.setColor(QPalette::ButtonText, QColor(236, 240, 241));
+    menuPalette.setColor(QPalette::Highlight, QColor(52, 152, 219));
+    menuPalette.setColor(QPalette::Window, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Base, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::AlternateBase, QColor(52, 52, 52));
+    menuPalette.setColor(QPalette::ToolTipBase, QColor(236, 240, 241));
+    menuPalette.setColor(QPalette::ToolTipText, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Link, QColor(52, 152, 219));
+    menuPalette.setColor(QPalette::LinkVisited, QColor(155, 89, 182));
+    menuPalette.setColor(QPalette::Light, QColor(62, 62, 62));
+    menuPalette.setColor(QPalette::Midlight, QColor(52, 52, 52));
+    menuPalette.setColor(QPalette::Dark, QColor(32, 32, 32));
+    menuPalette.setColor(QPalette::Mid, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Shadow, QColor(22, 22, 22));
+    menuPalette.setColor(QPalette::BrightText, QColor(255, 255, 255));
+    menuPalette.setColor(QPalette::Button, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Text, QColor(236, 240, 241));
+    menuPalette.setColor(QPalette::HighlightedText, QColor(255, 255, 255));
+    menuPalette.setColor(QPalette::Disabled, QPalette::WindowText, QColor(128, 128, 128));
+    menuPalette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor(128, 128, 128));
+    menuPalette.setColor(QPalette::Disabled, QPalette::Text, QColor(128, 128, 128));
+    menuPalette.setColor(QPalette::Disabled, QPalette::Light, QColor(82, 82, 82));
+    menuPalette.setColor(QPalette::Disabled, QPalette::Dark, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Disabled, QPalette::Highlight, QColor(82, 82, 82));
+    menuPalette.setColor(QPalette::Disabled, QPalette::HighlightedText, QColor(168, 168, 168));
+    menuPalette.setColor(QPalette::Disabled, QPalette::Button, QColor(62, 62, 62));
+    menuPalette.setColor(QPalette::Disabled, QPalette::Base, QColor(62, 62, 62));
+    menuPalette.setColor(QPalette::Disabled, QPalette::AlternateBase, QColor(72, 72, 72));
+    menuPalette.setColor(QPalette::Disabled, QPalette::Shadow, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Disabled, QPalette::BrightText, QColor(168, 168, 168));
+    menuPalette.setColor(QPalette::Disabled, QPalette::ToolTipBase, QColor(168, 168, 168));
+    menuPalette.setColor(QPalette::Disabled, QPalette::ToolTipText, QColor(82, 82, 82));
+    menuPalette.setColor(QPalette::Disabled, QPalette::Link, QColor(102, 102, 102));
+    menuPalette.setColor(QPalette::Disabled, QPalette::LinkVisited, QColor(128, 128, 128));
+    menuPalette.setColor(QPalette::Disabled, QPalette::Midlight, QColor(82, 82, 82));
+    menuPalette.setColor(QPalette::Disabled, QPalette::Mid, QColor(62, 62, 62));
+    menuPalette.setColor(QPalette::Active, QPalette::WindowText, QColor(236, 240, 241));
+    menuPalette.setColor(QPalette::Active, QPalette::ButtonText, QColor(236, 240, 241));
+    menuPalette.setColor(QPalette::Active, QPalette::Highlight, QColor(52, 152, 219));
+    menuPalette.setColor(QPalette::Active, QPalette::Window, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Active, QPalette::Base, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Active, QPalette::AlternateBase, QColor(52, 52, 52));
+    menuPalette.setColor(QPalette::Active, QPalette::ToolTipBase, QColor(236, 240, 241));
+    menuPalette.setColor(QPalette::Active, QPalette::ToolTipText, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Active, QPalette::Link, QColor(52, 152, 219));
+    menuPalette.setColor(QPalette::Active, QPalette::LinkVisited, QColor(155, 89, 182));
+    menuPalette.setColor(QPalette::Active, QPalette::Light, QColor(62, 62, 62));
+    menuPalette.setColor(QPalette::Active, QPalette::Midlight, QColor(52, 52, 52));
+    menuPalette.setColor(QPalette::Active, QPalette::Dark, QColor(32, 32, 32));
+    menuPalette.setColor(QPalette::Active, QPalette::Mid, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Active, QPalette::Shadow, QColor(22, 22, 22));
+    menuPalette.setColor(QPalette::Active, QPalette::BrightText, QColor(255, 255, 255));
+    menuPalette.setColor(QPalette::Active, QPalette::Button, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Active, QPalette::Text, QColor(236, 240, 241));
+    menuPalette.setColor(QPalette::Active, QPalette::HighlightedText, QColor(255, 255, 255));
+    menuPalette.setColor(QPalette::Inactive, QPalette::WindowText, QColor(200, 200, 200));
+    menuPalette.setColor(QPalette::Inactive, QPalette::ButtonText, QColor(200, 200, 200));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Highlight, QColor(82, 82, 82));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Window, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Base, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Inactive, QPalette::AlternateBase, QColor(52, 52, 52));
+    menuPalette.setColor(QPalette::Inactive, QPalette::ToolTipBase, QColor(236, 240, 241));
+    menuPalette.setColor(QPalette::Inactive, QPalette::ToolTipText, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Link, QColor(82, 82, 82));
+    menuPalette.setColor(QPalette::Inactive, QPalette::LinkVisited, QColor(102, 102, 102));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Light, QColor(52, 52, 52));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Midlight, QColor(47, 47, 47));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Dark, QColor(37, 37, 37));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Mid, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Shadow, QColor(27, 27, 27));
+    menuPalette.setColor(QPalette::Inactive, QPalette::BrightText, QColor(220, 220, 220));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Button, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Text, QColor(200, 200, 200));
+    menuPalette.setColor(QPalette::Inactive, QPalette::HighlightedText, QColor(230, 230, 230));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::WindowText, QColor(100, 100, 100));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::ButtonText, QColor(100, 100, 100));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Text, QColor(100, 100, 100));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Light, QColor(62, 62, 62));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Dark, QColor(47, 47, 47));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Highlight, QColor(62, 62, 62));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::HighlightedText, QColor(130, 130, 130));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::WindowText, QColor(80, 80, 80));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::ButtonText, QColor(80, 80, 80));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Text, QColor(80, 80, 80));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Light, QColor(52, 52, 52));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Dark, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Highlight, QColor(52, 52, 52));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::HighlightedText, QColor(110, 110, 110));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::WindowText, QColor(60, 60, 60));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::ButtonText, QColor(60, 60, 60));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Text, QColor(60, 60, 60));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Light, QColor(47, 47, 47));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Dark, QColor(37, 37, 37));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Highlight, QColor(47, 47, 47));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::HighlightedText, QColor(90, 90, 90));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::WindowText, QColor(40, 40, 40));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::ButtonText, QColor(40, 40, 40));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Text, QColor(40, 40, 40));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Light, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Dark, QColor(32, 32, 32));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Highlight, QColor(42, 42, 42));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::HighlightedText, QColor(70, 70, 70));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::WindowText, QColor(20, 20, 20));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::ButtonText, QColor(20, 20, 20));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Text, QColor(20, 20, 20));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Light, QColor(37, 37, 37));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Dark, QColor(27, 27, 27));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Highlight, QColor(37, 37, 37));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::HighlightedText, QColor(50, 50, 50));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::WindowText, QColor(10, 10, 10));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::ButtonText, QColor(10, 10, 10));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Text, QColor(10, 10, 10));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Light, QColor(32, 32, 32));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Dark, QColor(22, 22, 22));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Highlight, QColor(32, 32, 32));
+    menuPalette.setColor(QPalette::Inactive, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::Disabled, QPalette::HighlightedText, QColor(30, 30, 30));
+    menuBar->setPalette(menuPalette);
 
     // 创建"文件"菜单
     QMenu *fileMenu = menuBar->addMenu("文件(&F)");

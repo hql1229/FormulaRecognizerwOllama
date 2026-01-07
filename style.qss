@@ -214,6 +214,54 @@ QDialogButtonBox {
     button-layout: 0;
 }
 
+/* 菜单栏样式 */
+QMenuBar {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #2c3e50, stop:1 #34495e);
+    color: #ecf0f1;
+    border: none;
+    padding: 4px;
+    min-height: 24px;
+}
+
+QMenuBar::item {
+    background: transparent;
+    padding: 4px 12px;
+}
+
+QMenuBar::item:selected {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #3498db, stop:1 #2980b9);
+    border-radius: 4px;
+}
+
+QMenuBar::item:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #2980b9, stop:1 #3498db);
+}
+
+/* 菜单样式 */
+QMenu {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #2c3e50, stop:1 #34495e);
+    border: 2px solid #3498db;
+    border-radius: 6px;
+    padding: 6px;
+    color: #ecf0f1;
+}
+
+QMenu::item {
+    background: transparent;
+    padding: 4px 24px;
+    margin: 2px 4px;
+}
+
+QMenu::item:selected {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #3498db, stop:1 #2980b9);
+    border-radius: 4px;
+}
+
 /* 提示文本样式 */
 QLabel[objectName*="Hint"], QLabel[objectName*="Info"] {
     color: #95a5a6;
