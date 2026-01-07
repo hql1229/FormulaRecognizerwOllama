@@ -80,3 +80,143 @@ QVBoxLayout, QHBoxLayout {
     spacing: 12px;
     margin: 12px;
 }
+
+/* 设置对话框样式 */
+QDialog {
+    background-color: #1a1a1a;
+}
+
+/* 标签页样式 */
+QTabWidget::pane {
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #2c3e50, stop:1 #34495e);
+}
+
+QTabBar::tab {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #2c3e50, stop:1 #34495e);
+    border: 1px solid #3498db;
+    border-bottom: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    color: #ecf0f1;
+    padding: 8px 16px;
+    margin-right: 2px;
+}
+
+QTabBar::tab:selected {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #3498db, stop:1 #2980b9);
+}
+
+QTabBar::tab:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #2980b9, stop:1 #3498db);
+}
+
+/* 分组框样式 */
+QGroupBox {
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    color: #ecf0f1;
+    font-weight: bold;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 4px 8px;
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #3498db, stop:1 #2980b9);
+    border-radius: 4px;
+    color: white;
+}
+
+/* 下拉框样式 */
+QComboBox {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #2c3e50, stop:1 #34495e);
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    color: #ecf0f1;
+    padding: 6px;
+    min-width: 100px;
+}
+
+QComboBox:hover {
+    border: 2px solid #2980b9;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 20px;
+}
+
+QComboBox::down-arrow {
+    image: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #ecf0f1;
+    margin-right: 8px;
+}
+
+QComboBox QAbstractItemView {
+    background: #2c3e50;
+    border: 2px solid #3498db;
+    selection-background-color: #3498db;
+    color: #ecf0f1;
+}
+
+/* 数字输入框样式 */
+QSpinBox {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #2c3e50, stop:1 #34495e);
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    color: #ecf0f1;
+    padding: 6px;
+}
+
+QSpinBox:hover {
+    border: 2px solid #2980b9;
+}
+
+QSpinBox::up-button, QSpinBox::down-button {
+    background: #3498db;
+    border: none;
+    width: 16px;
+}
+
+QSpinBox::up-button:hover, QSpinBox::down-button:hover {
+    background: #2980b9;
+}
+
+QSpinBox::up-arrow {
+    image: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 5px solid #ecf0f1;
+}
+
+QSpinBox::down-arrow {
+    image: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #ecf0f1;
+}
+
+/* 对话框按钮框样式 */
+QDialogButtonBox {
+    button-layout: 0;
+}
+
+/* 提示文本样式 */
+QLabel[objectName*="Hint"], QLabel[objectName*="Info"] {
+    color: #95a5a6;
+    font-weight: normal;
+    font-style: italic;
+}

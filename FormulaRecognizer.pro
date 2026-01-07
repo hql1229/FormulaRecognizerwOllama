@@ -20,16 +20,19 @@ SOURCES += \
     mainwindow.cpp \
     ollamaclient.cpp \
     screenshotoverlay.cpp \
-    configmanager.cpp
+    configmanager.cpp \
+    settingsdialog.cpp
 
 HEADERS += \
     mainwindow.h \
     ollamaclient.h \
     screenshotoverlay.h \
-    configmanager.h
+    configmanager.h \
+    settingsdialog.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    settingsdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
